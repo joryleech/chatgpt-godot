@@ -1,3 +1,4 @@
+
 # ChatGPT Godot
 OpenAI ChatGPT unofficial GDscript wrapper 
 
@@ -16,6 +17,35 @@ Note: Proxying is in development and recommended for non-internal tools.
 
 ### Completions
 
+Used to generate text completions, or AI assistance.
+
+**Examples**
+
+For one off requests:
+```GDScript
+func request_message(message : String):
+	var completion = ChatGptApi.Completion.new()
+	add_child(completion)
+	
+	#The system message determines the AIs intended role, and behavior
+	completion.add_message(
+		"You are a helpful assistant AI",
+		ChatGptApi.Completion.CompletionMessage.CompletionMessageRole.System
+	)
+	
+	completion.add_message(
+		message,
+		ChatGptApi.Completion.CompletionMessage.CompletionMessageRole.User
+	)
+	completion.on_success.connect(self.on_fetch_completion_success)
+	completion.on_failure.connect(self.on_fetch_completion_error)
+	completion.request()
+	
+func on_fetch_completion_success(response : Dictionary):
+	print(response['choices'][0]['message']['content'])
+```
+
+
 **Properties**
 | Properties                 | Type              | Default       | Summary                                                                                          |
 |----------------------------|-------------------|---------------|--------------------------------------------------------------------------------------------------|
@@ -31,12 +61,28 @@ Note: Proxying is in development and recommended for non-internal tools.
 | on_request_completed | Emitted on completion of any network call, returns all unparsed request data for manual interpretation. |   |
 | on_failure           | Emitted on failure of network call or API error, provides parsed JSON of response, and code.            |   |
 
+### Models
+
+Used to list the several models that can be used for text completion.
+
+**Example**
+```GDScript
+func fetch_models():
+	var models : ChatGptApi.Models = ChatGptApi.Models.new()
+	add_child(models)
+	models.on_success.connect(self.on_fetch_models_success)
+	models.on_failure.connect(self.on_fetch_models_error)
+	models.request()
+	
+func on_fetch_models_success(response : Dictionary):
+	print(response['data'])
+```
+
 ## TODO List
 * Configurable Proxys
 * Additional error handling for failed network requests
 * Documentation comments
 * Additional OpenAI endpoints
-* Documented code examples in Readme
 
 ## License
 
