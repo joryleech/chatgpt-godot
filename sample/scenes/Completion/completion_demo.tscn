@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://7vt0d7dy1otg"]
+[gd_scene load_steps=2 format=3 uid="uid://dxxbosm87jbwa"]
 
-[ext_resource type="Script" path="res://sample/scenes/CompletionSampleScript.gd" id="1_y6oxw"]
+[ext_resource type="Script" path="res://sample/scenes/Completion/CompletionSampleScript.gd" id="1_2lwdu"]
 
 [node name="Completion Demo" type="VBoxContainer"]
 anchors_preset = 15
@@ -8,7 +8,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y6oxw")
+script = ExtResource("1_2lwdu")
 
 [node name="Output" type="RichTextLabel" parent="."]
 layout_mode = 2

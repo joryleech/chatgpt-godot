@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://deko8xg8nql45"]
+
+[ext_resource type="Script" path="res://sample/scenes/Models/ModelsSampleScript.gd" id="1_t7vj1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u0ny"]
+
+[node name="Models Demo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t7vj1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Response:"
+
+[node name="Output" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.91
+text = "Fetch Models"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.12
+theme_override_styles/panel = SubResource("StyleBoxFlat_6u0ny")
+
+[connection signal="button_up" from="HBoxContainer/Button" to="." method="_send_message"]

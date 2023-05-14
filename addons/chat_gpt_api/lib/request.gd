@@ -1,7 +1,6 @@
 extends Node
 
 var one_shot : bool = true
-var timeout_ms = 10000
 var method : int = HTTPClient.METHOD_POST
 
 var api_endpoint : String =""
