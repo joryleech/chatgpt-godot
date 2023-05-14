@@ -5,7 +5,7 @@ Use text completion with the [OpenAI API](https://openai.com/blog/openai-api) vi
 
 
 ## Installation
-* Download the 
+* Copy the contents of the ``/addons`` folder to your projects ``res://addons`` folder.
 * Enable ``ChatGptApiPlugin`` in ``Project > Project Settings > Plugins``
 * Set up and generate your OpenAI API Key here from [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
 * Enter your API key in the new setting found ``Project > Project Settings > General > Addons > Chat Gpt > API Key``
