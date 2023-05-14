@@ -37,6 +37,7 @@ func request_message(message : String):
 		message,
 		ChatGptApi.Completion.CompletionMessage.CompletionMessageRole.User
 	)
+	
 	completion.on_success.connect(self.on_fetch_completion_success)
 	completion.on_failure.connect(self.on_fetch_completion_error)
 	completion.request()
@@ -65,10 +66,10 @@ func on_fetch_completion_success(response : Dictionary):
 
 Used to list the several models that can be used for text completion.
 
-**Example**
+**List Example**
 ```GDScript
 func fetch_models():
-	var models : ChatGptApi.Models = ChatGptApi.Models.new()
+	var models : ChatGptApi.Models.List = ChatGptApi.Models.List.new()
 	add_child(models)
 	models.on_success.connect(self.on_fetch_models_success)
 	models.on_failure.connect(self.on_fetch_models_error)
@@ -77,6 +78,14 @@ func fetch_models():
 func on_fetch_models_success(response : Dictionary):
 	print(response['data'])
 ```
+
+Models get allows you to fetch information about a specific model
+
+**Get Example**
+```GDScript
+var models : ChatGptApi.Models.Get = ChatGptApi.Models.Get.new("text-ada-001")
+```
+
 
 ## TODO List
 * Configurable Proxys

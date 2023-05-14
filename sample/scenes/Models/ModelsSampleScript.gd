@@ -3,10 +3,10 @@ extends Node
 var text_log : PackedStringArray = []
 @onready var text_input : TextEdit = $HBoxContainer/Input
 @onready var text_output : RichTextLabel = $Output
-var models : ChatGptApi.Models
+var models : ChatGptApi.Models.List
 
 func _send_message():
-	models = ChatGptApi.Models.new()
+	models = ChatGptApi.Models.List.new()
 	add_child(models)
 	#System message, indicates the state which the AI should perform
 	models.on_success.connect(self.on_request_success)
