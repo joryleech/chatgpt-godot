@@ -1,0 +1,27 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[addons]
+
+chat_gpt/api_key=" "
+
+[application]
+
+config/name="ChatGptPlugin"
+run/main_scene="res://sample/sample_scene.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
+
+[autoload]
+
+ChatGptApi="*res://addons/chat_gpt_api/chat_gpt_api.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/chat_gpt_api/plugin.cfg")

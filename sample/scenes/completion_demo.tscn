@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://7vt0d7dy1otg"]
+
+[ext_resource type="Script" path="res://sample/scenes/CompletionSampleScript.gd" id="1_y6oxw"]
+
+[node name="Completion Demo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y6oxw")
+
+[node name="Output" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.14
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer"]
+layout_mode = 2
+text = "Maintain Converstation"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Input" type="TextEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Place Input Here"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.28
+text = "Submit"
+
+[connection signal="toggled" from="MarginContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="button_up" from="HBoxContainer/Button" to="." method="_on_submit_log"]
