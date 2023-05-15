@@ -8,9 +8,9 @@ var api_key : String
 
 
 func _init():
-	ProjectSettings.set_initial_value(get_api_key_settings_path(), " ")
+	ProjectSettings.set_initial_value(get_api_key_settings_path(), "")
 	if(!ProjectSettings.has_setting(get_api_key_settings_path())):
-		ProjectSettings.set_setting(get_api_key_settings_path(), " ")
+		ProjectSettings.set_setting(get_api_key_settings_path(), "")
 		
 	var property_info = {
 		"name": get_api_key_settings_path,

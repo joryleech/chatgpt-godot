@@ -10,7 +10,7 @@ config_version=5
 
 [addons]
 
-chat_gpt/api_key=" "
+chat_gpt/api_key=""
 
 [application]
 
