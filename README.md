@@ -1,4 +1,5 @@
 
+  
 # ChatGPT Godot
 OpenAI ChatGPT unofficial GDscript wrapper 
 
@@ -12,7 +13,6 @@ Use text completion with the [OpenAI API](https://openai.com/blog/openai-api) vi
 * Activate Advanced Settings in Project Settings
 * Enter your API key in the new setting found ``Project > Project Settings > General > Addons > Chat Gpt > API Key``
 
-Note: Proxying is in development and recommended for non-internal tools. 
 
 ## Usage
 
@@ -87,12 +87,40 @@ Models get allows you to fetch information about a specific model
 var models : ChatGptApi.Models.Get = ChatGptApi.Models.Get.new("text-ada-001")
 ```
 
+### Images 
+
+Generates one or more images based on a prompt.
+
+#### Generate Example
+```GDScript
+func generate_images():
+	var image_generator = ChatGptApi.Images.Generate.new()
+	add_child(image_generator)
+	image_generator.prompt = "A basket full of kittens"
+	image_generator.size = "256x256"
+	image_generator.image_count = 2
+	image_generator.on_success.connect(self.on_request_success)
+	image_generator.request()
+	
+func on_request_success(response):
+	for image_response in response['data']:
+		print(image_response['url'])
+```
+
+**Properties**
+
+| Properties  | Type   | Default | Summary                                                                        |
+|-------------|--------|---------|--------------------------------------------------------------------------------|
+| prompt      | String | null    | A description of the image intended to be generated.                           |
+| size        | String | 256x256 | The pixel size of the generated images. (Options: 256x256, 512x512, 1024x1024) |
+| image_count | int    | 1       | The number of images to be generated                                           |
+
 
 ## TODO List
-* Configurable Proxys
 * Additional error handling for failed network requests
 * Documentation comments
-* Additional OpenAI endpoints
+* Automatic Texture Generation from Image Generation
+* Better documentation on the default parameters of a request and the additional parameters for specific requests
 
 ## License
 
