@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddewv8a8sqy5c"]
+
+[ext_resource type="Script" path="res://sample/scenes/Images/ImageSampleScript.gd" id="1_3dw3i"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vbihi"]
+
+[node name="Images Demo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3dw3i")
+
+[node name="Output" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+bbcode_enabled = true
+scroll_following = true
+shortcut_keys_enabled = false
+selection_enabled = true
+deselect_on_focus_loss_enabled = false
+
+[node name="OptionsContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ImageCount" type="HBoxContainer" parent="OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpinBox" type="SpinBox" parent="OptionsContainer/ImageCount"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+
+[node name="Label" type="Label" parent="OptionsContainer/ImageCount"]
+layout_mode = 2
+text = "Number of Images"
+
+[node name="ImageSize" type="HBoxContainer" parent="OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="OptionButton" parent="OptionsContainer/ImageSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.89
+button_group = SubResource("ButtonGroup_vbihi")
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "256x256"
+popup/item_0/id = 0
+popup/item_1/text = "512x512"
+popup/item_1/id = 1
+popup/item_2/text = "1024x1024"
+popup/item_2/id = 2
+
+[node name="Label3" type="Label" parent="OptionsContainer/ImageSize"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Image Size
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Input" type="TextEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Place Input Here"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.28
+text = "Submit"
+
+[connection signal="meta_clicked" from="Output" to="." method="_on_output_link_clicked"]
+[connection signal="button_up" from="HBoxContainer/Button" to="." method="_on_submit_log"]

@@ -13,6 +13,7 @@ signal on_failure(code : int, response : Dictionary)
 var debug = false
 var headers : PackedStringArray = []
 
+
 @onready var http_request : HTTPRequest = HTTPRequest.new()
 func _ready():
 	add_child(http_request)
@@ -58,8 +59,11 @@ func _request_completed(result, response_code, headers, body):
 		_on_success(response)
 	else:
 		emit_signal('on_failure', response_code, response)
-	if(one_shot):
+	if(can_node_die()):
 		self.queue_free()
 
+func can_node_die():
+	return one_shot
+	
 func _on_success(response):
 	emit_signal('on_success', response)
