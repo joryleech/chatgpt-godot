@@ -12,7 +12,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3dw3i")
 
-[node name="Output" type="RichTextLabel" parent="."]
+[node name="OutputContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UrlOutput" type="RichTextLabel" parent="OutputContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
@@ -21,6 +26,15 @@ scroll_following = true
 shortcut_keys_enabled = false
 selection_enabled = true
 deselect_on_focus_loss_enabled = false
+
+[node name="ImageOutput" type="HBoxContainer" parent="OutputContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="OutputContainer/ImageOutput"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
 
 [node name="OptionsContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -65,6 +79,17 @@ size_flags_horizontal = 3
 text = "Image Size
 "
 
+[node name="GenerateTextureBool" type="HBoxContainer" parent="OptionsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionButton" type="CheckBox" parent="OptionsContainer/GenerateTextureBool"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.89
+button_group = SubResource("ButtonGroup_vbihi")
+text = "Generate Texture"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
@@ -81,5 +106,5 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.28
 text = "Submit"
 
-[connection signal="meta_clicked" from="Output" to="." method="_on_output_link_clicked"]
+[connection signal="meta_clicked" from="OutputContainer/UrlOutput" to="." method="_on_output_link_clicked"]
 [connection signal="button_up" from="HBoxContainer/Button" to="." method="_on_submit_log"]
