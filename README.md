@@ -114,13 +114,10 @@ func on_request_success(response):
 | prompt      | String | null    | A description of the image intended to be generated.                           |
 | size        | String | 256x256 | The pixel size of the generated images. (Options: 256x256, 512x512, 1024x1024) |
 | image_count | int    | 1       | The number of images to be generated                                           |
-
-
+| generate_textures  | bool    | false       | Automatically converts images into textures via on_generate_texture signal                                           |
+| response_format  | string    | url       | The returned format of the images in the dictionary (defaults to base64 if generate_textures  is enabled)                                           |
 ## TODO List
 * Additional error handling for failed network requests
-* Documentation comments
-* Automatic Texture Generation from Image Generation
-* Better documentation on the default parameters of a request and the additional parameters for specific requests
 
 ## License
 
